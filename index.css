@@ -1,0 +1,342 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+header {
+    background-color: #f8f9fa;
+    padding: 10px 0; /* Decrease padding to decrease header size */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+}
+
+.menu li {
+    margin-right: 20px;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.line {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 4px 0;
+}
+
+/* Product Showcase Styles */
+.product-showcase {
+    background-color: #f0f0f0;
+    padding: 20px 0; /* Adjust padding as needed to move product cards up */
+    text-align: center;
+    position: relative; /* Add relative positioning */
+    z-index: 1000; /* Ensure the slider appears above the footer */
+}
+
+.product-showcase h2 {
+    margin-bottom: 30px;
+}
+
+.slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+}
+
+.product {
+    flex: 0 0 auto;
+    margin-right: 20px;
+    scroll-snap-align: start;
+}
+
+.product img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* Footer Styles */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #343a40;
+    color: #fff;
+    padding: 20px 0; /* Adjust padding as needed */
+    z-index: 999; /* Set a high z-index to ensure it appears above other content */
+}
+
+.footer-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer-links ul {
+    list-style: none;
+    display: flex;
+}
+
+.footer-links ul li {
+    margin-right: 20px;
+}
+
+.footer-links ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.social-icons img {
+    width: 30px;
+    margin-left: 10px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    header {
+        padding: 10px 0;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .slider {
+        flex-wrap: nowrap;
+    }
+
+    .product {
+        margin-right: 10px;
+    }
+
+    .product img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .footer-links ul {
+        flex-direction: column;
+    }
+
+    .footer-links ul li {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
+
+.hamburger-button {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.nav-links {
+    display: none;
+    background-color: #333;
+    color: white;
+}
+
+.nav-links a {
+    display: block;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    background-color: #111;
+}
+
+/* Add styles for full-screen menu */
+.fullscreen-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    z-index: 1000; /* Ensure it appears on top of other elements */
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+}
+
+.fullscreen-menu.active {
+    display: flex; /* Show menu when active */
+}
+
+.fullscreen-menu .nav-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.fullscreen-menu .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+/* Add transitions for smooth animation */
+.transition {
+    transition: all 0.3s ease;
+}
+
+.hamburger-menu.active {
+    display: none;
+}
+
+.product {
+    width: 200px;
+    height: 300px;
+    perspective: 1000px; /* Add 3D perspective */
+    margin-right: 20px;
+    position: relative;
+}
+
+.product-inner {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d; /* Preserve 3D transformations */
+    transition: transform 0.5s ease;
+}
+
+.product:hover .product-inner {
+    transform: rotateY(180deg); /* Rotate on hover */
+}
+
+.product-front,
+.product-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden; /* Hide the backface of the element */
+}
+
+.product-front {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.product-back {
+    transform: rotateY(180deg); /* Initially rotate to the back */
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+.product img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.product h3,
+.product p {
+    margin: 5px 0;
+}
+
+.product-info {
+    display: none;
+}
+
+.product:hover .product-info {
+    display: block;
+}
+
+#noProductMessage {
+    display: none;
+    text-align: center;
+    margin-top: 20px; /* Adjust as needed */
+}
+.search {
+    background-color: #e9ecef;
+    padding: 20px 0; /* Adjust padding as needed */
+    text-align: center;
+}
+
+.search h2 {
+    margin-bottom: 20px;
+}
+
+.search input[type="text"] {
+    padding: 10px;
+    margin-bottom: 10px; /* Add margin bottom for spacing */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 60%; /* Adjust width as needed */
+}
+
+.search button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    width: 20%; /* Adjust width as needed */
+}
+
+/* Add media query for responsiveness */
+@media screen and (max-width: 768px) {
+    .search input[type="text"],
+    .search button {
+        width: 100%; /* Make search input and button full-width on smaller screens */
+    }
+}
